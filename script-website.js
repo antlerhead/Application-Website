@@ -26,6 +26,8 @@ function plusSlides(n) {
 
 // Thumbnail image controls
 function currentSlide(n) {
+  clearInterval(myTimer);
+  myTimer = setInterval(function(){plusSlides(n + 1)}, 4000);
   showSlides(slideIndex = n);
 }
 
@@ -44,3 +46,8 @@ function showSlides(n) {
   slides[slideIndex-1].style.display = "block"; 
   dots[slideIndex-1].className += " active";
 }
+
+window.addEventListener("load",function() {
+  showSlides(slideIndex);
+  myTimer = setInterval(function(){plusSlides(1)}, 4000);
+})
